@@ -50,26 +50,65 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Container */
-.container {
-    max-width: 800px;
+/* Layout */
+.layout {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    min-height: 100vh;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem;
 }
 
-/* Header */
-.header {
-    padding: 4rem 0 2rem;
+/* Sidebar */
+.sidebar {
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    padding: 2rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 2rem;
+}
+
+/* Profile Section */
+.profile-section {
     text-align: center;
-    position: relative;
+    margin-bottom: 2rem;
 }
 
-.header-content {
-    position: relative;
+.profile-image {
+    margin-bottom: 1.5rem;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--card-border);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    border-color: var(--accent-color);
+    box-shadow: var(--shadow-lg);
+}
+
+.profile-text {
+    text-align: center;
 }
 
 .name {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
@@ -79,16 +118,95 @@ body {
 }
 
 .title {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--text-secondary);
     font-weight: 400;
+    margin-bottom: 0;
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
     margin-bottom: 2rem;
 }
 
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list li {
+    margin-bottom: 0.5rem;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    transform: translateX(4px);
+}
+
+/* Contact Info */
+.contact-info {
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-label {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+}
+
+.contact-value {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.social-links a {
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+    background-color: var(--card-bg);
+    transform: translateY(-2px);
+}
+
+/* Theme Toggle */
 .theme-toggle {
-    position: absolute;
-    top: 0;
-    right: 0;
+    margin-top: auto;
+    text-align: center;
 }
 
 #theme-toggle {
@@ -96,14 +214,16 @@ body {
     border: none;
     color: var(--text-secondary);
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.75rem;
     border-radius: 0.5rem;
     transition: all 0.2s ease;
+    border: 1px solid var(--border-color);
 }
 
 #theme-toggle:hover {
-    background-color: var(--bg-secondary);
+    background-color: var(--card-bg);
     color: var(--text-primary);
+    border-color: var(--accent-color);
 }
 
 .sun-icon,
@@ -127,9 +247,11 @@ body {
     opacity: 0;
 }
 
-/* Main content */
-.main {
-    padding-bottom: 4rem;
+/* Main Content */
+.main-content {
+    padding: 3rem 4rem;
+    overflow-y: auto;
+    max-width: 1000px;
 }
 
 /* Sections */
@@ -437,17 +559,93 @@ body {
 }
 
 /* Responsive design */
+@media (max-width: 1024px) {
+    .layout {
+        grid-template-columns: 300px 1fr;
+    }
+    
+    .main-content {
+        padding: 2rem 3rem;
+    }
+}
+
 @media (max-width: 768px) {
-    .container {
-        padding: 0 1rem;
+    .layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+    
+    .sidebar {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 1.5rem;
+    }
+    
+    .sidebar-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        align-items: center;
+    }
+    
+    .profile-section {
+        margin-bottom: 0;
+        flex: 0 0 auto;
+    }
+    
+    .profile-pic {
+        width: 80px;
+        height: 80px;
     }
     
     .name {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
     }
     
     .title {
-        font-size: 1.1rem;
+        font-size: 0.875rem;
+    }
+    
+    .sidebar-nav {
+        margin-bottom: 0;
+        flex: 1;
+    }
+    
+    .nav-list {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .nav-list li {
+        margin-bottom: 0;
+    }
+    
+    .nav-link {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+    
+    .contact-info {
+        margin-bottom: 0;
+        flex: 0 0 100%;
+        order: 3;
+    }
+    
+    .social-links {
+        margin-bottom: 0;
+        flex: 0 0 auto;
+    }
+    
+    .theme-toggle {
+        margin-top: 0;
+        flex: 0 0 auto;
+    }
+    
+    .main-content {
+        padding: 2rem 1.5rem;
     }
     
     .section-title {
@@ -479,8 +677,35 @@ body {
 }
 
 @media (max-width: 480px) {
+    .sidebar-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+    
     .name {
         font-size: 2rem;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .contact-info {
+        order: 2;
+    }
+    
+    .social-links {
+        order: 3;
+    }
+    
+    .theme-toggle {
+        order: 4;
     }
     
     .section {
