@@ -85,19 +85,22 @@
                     title: "Building a Minimalistic Portfolio",
                     date: "2024-01-15",
                     excerpt: "How I designed and built this portfolio website using vanilla HTML, CSS, and JavaScript with a focus on minimalism and performance.",
-                    slug: "building-minimalistic-portfolio"
+                    slug: "building-minimalistic-portfolio",
+                    categories: ["Web Development", "Design", "Portfolio"]
                 },
                 {
                     title: "My Journey in Software Engineering",
                     date: "2024-01-10",
                     excerpt: "Reflections on my path from Rice University to becoming a software engineer, including key learnings and experiences.",
-                    slug: "software-engineering-journey"
+                    slug: "software-engineering-journey",
+                    categories: ["Career", "Education", "Personal"]
                 },
                 {
                     title: "The Art of Clean Code",
                     date: "2024-01-05",
                     excerpt: "Principles and practices I follow to write maintainable, readable, and efficient code in my projects.",
-                    slug: "clean-code-principles"
+                    slug: "clean-code-principles",
+                    categories: ["Programming", "Best Practices", "Code Quality"]
                 }
             ];
 
@@ -116,6 +119,9 @@
                             day: 'numeric'
                         })}</p>
                         <p class="blog-post-excerpt">${post.excerpt}</p>
+                        <div class="blog-post-categories">
+                            ${post.categories.map(category => `<span class="category-tag">${category}</span>`).join('')}
+                        </div>
                     </article>
                 `).join('');
 
