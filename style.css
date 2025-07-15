@@ -444,9 +444,9 @@ body {
 }
 
 .blog-post {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 0.75rem;
+    /* background-color: var(--card-bg); */
+    /* border: 1px solid var(--border-color); */
+    /* border-radius: 0.75rem; */
     padding: 2.5rem;
     transition: all 0.3s ease;
     text-align: center;
