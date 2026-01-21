@@ -29,7 +29,6 @@
                         <li><a href="#about" class="nav-link">About</a></li>
                         <li><a href="#projects" class="nav-link">Projects</a></li>
                         <li><a href="#experience" class="nav-link">Experience</a></li>
-                        <li><a href="#blog" class="nav-link">Blog</a></li>
                     </ul>
                 </nav>
 
@@ -119,6 +118,59 @@
                 <h2 class="section-title">💡 Projects</h2>
                 <div class="projects-grid">
                     <article class="project-card">
+                        <div class="project-image-container" onclick="openModal('images/portfolio/loop-ios.jpg')">
+                            <img src="images/portfolio/loop-ios.jpg" alt="Loop iOS App" class="project-image" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>Add screenshot: images/portfolio/loop-ios.jpg</div>'">
+                        </div>
+                        <h3 class="project-title">Loop iOS</h3>
+                        <p class="project-description">SwiftUI frontend for Loop, a multimedia sharing platform iOS app designed to help you stay connected with family and friends. Built with modern iOS development practices and a focus on user experience and seamless communication.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Swift</span>
+                            <span class="tech-tag">SwiftUI</span>
+                            <span class="tech-tag">iOS</span>
+                            <span class="tech-tag">Xcode</span>
+                        </div>
+                        <a href="https://github.com/AndrewOOndara/loop-ios" target="_blank" class="project-link">View Project →</a>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-image-container" onclick="openModal('images/portfolio/musii.mp4', 'video')" style="position: relative;">
+                            <img src="images/portfolio/musii-thumbnail.png" alt="Musii Slack App" class="project-image">
+                            <div class="video-play-overlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; opacity: 0.85; transition: all 0.3s ease;">
+                                <svg width="64" height="64" viewBox="0 0 24 24" fill="white" style="filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));">
+                                    <circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.6)"/>
+                                    <path d="M10 8l6 4-6 4V8z" fill="white"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Musii</h3>
+                        <p class="project-description">A Slack app that allows users to change music in the office. Utilizes Python scripting and connects to the Spotify API to provide seamless music control directly from Slack. Features a user-friendly interface that makes it easy for team members to manage the office playlist and control playback.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Slack API</span>
+                            <span class="tech-tag">Spotify API</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <a href="#" class="project-link">View Project →</a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3 class="project-title">Audio Authentication</h3>
+                        <p class="project-description">Audio watermarking system with cryptographic key pairs and external artist verification. Prevents AI band impersonation using RSA 2048-bit encryption, digital signatures, and verification through Spotify, YouTube, and social media platforms. Features a React frontend and FastAPI backend with real-time watermark embedding and verification.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Cryptography</span>
+                            <span class="tech-tag">librosa</span>
+                            <span class="tech-tag">RSA</span>
+                        </div>
+                        <a href="https://github.com/AndrewOOndara/audio-authentication" target="_blank" class="project-link">View Project →</a>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-image-container" onclick="openModal('images/portfolio/flood-detection.jpg')">
+                            <img src="images/portfolio/flood-detection.jpg" alt="Multi-Drone Flood Detection" class="project-image" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>Add screenshot: images/portfolio/flood-detection.jpg</div>'">
+                        </div>
                         <h3 class="project-title">Multi-Drone Flood Detection Simulator</h3>
                         <p class="project-description">Developed a multi-drone system for mapping flood-affected areas during heavy rainfall for real-time flood monitoring. Created a PyBullet simulation, integrating a nearest-neighbor model to detect flood regions across various terrains. Designed an API to transmit coordinates of flooded areas to the frontend and display them on OpenStreetMaps.</p>
                         <div class="project-tech">
@@ -129,10 +181,13 @@
                             <span class="tech-tag">OpenCV</span>
                             <span class="tech-tag">OSM</span>
                         </div>
-                        <a href="#" class="project-link">View Project →</a>
+                        <a href="https://github.com/AndrewOOndara/drone-flood-detection" target="_blank" class="project-link">View Project →</a>
                     </article>
 
                     <article class="project-card">
+                        <div class="project-image-container" onclick="openModal('images/portfolio/palynomorph.jpg')">
+                            <img src="images/portfolio/palynomorph.jpg" alt="Palynomorph Detection" class="project-image" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>Add screenshot: images/portfolio/palynomorph.jpg</div>'">
+                        </div>
                         <h3 class="project-title">Palynomorph Detection</h3>
                         <p class="project-description">Cleaned the data and trained a faster R-CNN model for palynomorph detection. Created a CLI interface for researchers to easily use the detection system.</p>
                         <div class="project-tech">
@@ -145,6 +200,9 @@
                     </article>
 
                     <article class="project-card">
+                        <div class="project-image-container" onclick="openModal('images/portfolio/website.png')">
+                            <img src="images/portfolio/website.png" alt="Personal Website" class="project-image" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>Add screenshot: images/portfolio/website.png</div>'">
+                        </div>
                         <h3 class="project-title">Personal Website</h3>
                         <p class="project-description">Modern, minimalistic portfolio website built with vanilla HTML, CSS, and JavaScript featuring a two-column layout and dark/light mode toggle.</p>
                         <div class="project-tech">
@@ -164,8 +222,18 @@
                     <div class="timeline-item">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
+                            <h3 class="job-title">Software Engineer, Fullstack</h3>
+                            <p class="company">Atlassian, Analytics and Visualization Platform</p>
+                            <p class="duration">July 2025 - Present</p>
+                            <p class="job-description">Developed the frontend of the AI Data Explorer, a feature in the Atlassian Analytics platform that assists non-technical users in querying data and creating charts faster. Built a ChatGPT-like interface for data exploration and visualization, enabling users to interact with data using natural language. Implemented APIs for chart generation using React and GraphQL, with Python backend endpoints. Streamlined the data analysis workflow by making complex queries accessible through conversational AI.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
                             <h3 class="job-title">Software Engineer</h3>
-                            <p class="company">Nia (Stealth), Food Insecurity Startup</p>
+                            <p class="company">Nia</p>
                             <p class="duration">January 2024 - May 2025</p>
                             <p class="job-description">Designed a market platform for connecting communities with suppliers to facilitate bulk orders and improve access to products. Developed a consumer dashboard utilizing Next.js and ChakraUI to allow users to monitor and track group orders from suppliers. Implemented Firebase for real-time data storage and user authentication.</p>
                         </div>
@@ -202,18 +270,6 @@
                     </div>
                 </div>
             </section>
-
-            <!-- Blog Section -->
-            <section class="section" id="blog">
-                <h2 class="section-title">📝 Recent Posts</h2>
-                <div class="blog-posts" id="blog-posts">
-                    <!-- Blog posts will be loaded here -->
-                    <div class="loading">Loading recent posts...</div>
-                </div>
-                <div class="blog-link">
-                    <a href="blog/" class="view-all-posts">View All Posts →</a>
-                </div>
-            </section>
         </main>
     </div>
 
@@ -237,10 +293,66 @@
                     </svg>
                 </a>
             </div>
-            <p class="footer-text">© 2024 Andrew Ondara. Built with ❤️</p>
+            <p class="footer-text">© 2026 Andrew Ondara. Built with ❤️</p>
         </div>
     </footer>
 
+    <!-- Image/Video Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <img id="modalImage" class="modal-image" src="" alt="Project screenshot" style="display: none;">
+            <video id="modalVideo" class="modal-image" controls style="display: none;">
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        // Modal functionality
+        function openModal(mediaSrc, mediaType) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalVideo = document.getElementById('modalVideo');
+            
+            // Determine if it's a video based on file extension or explicit type
+            const isVideo = mediaType === 'video' || mediaSrc.endsWith('.mp4') || mediaSrc.endsWith('.webm') || mediaSrc.endsWith('.mov');
+            
+            if (isVideo) {
+                modalImg.style.display = 'none';
+                modalVideo.style.display = 'block';
+                modalVideo.src = mediaSrc;
+                modalVideo.load();
+            } else {
+                modalVideo.style.display = 'none';
+                modalImg.style.display = 'block';
+                modalImg.src = mediaSrc;
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            const modalVideo = document.getElementById('modalVideo');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            // Pause video when closing
+            if (modalVideo) {
+                modalVideo.pause();
+                modalVideo.currentTime = 0;
+            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
