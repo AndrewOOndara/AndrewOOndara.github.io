@@ -365,30 +365,30 @@ body {
     display: block;
 }
 
+.work-title-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.work-title-link:hover .work-title {
+    opacity: 0.6;
+}
+
 .work-title {
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-style: italic;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--text);
-    letter-spacing: -0.01em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
-.gallery-video {
-    position: relative;
-    width: 60%;
-    aspect-ratio: 16 / 9;
-    border-radius: 6px;
-    overflow: hidden;
+.work-bio {
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
 }
 
-.gallery-video iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 6px;
-}
 
 /* ============================================================
    Footer
@@ -485,21 +485,23 @@ body {
         margin-bottom: 1rem;
     }
 
-    .site-name {
-        position: fixed;
-        top: 1.25rem;
-        left: 1.25rem;
+    .corner-image {
+        position: static;
+        display: block;
+        margin: 1.5rem auto 0;
+        height: 80px;
+        width: auto;
     }
 
-    .corner-image {
-        position: fixed;
-        top: 0.75rem;
-        right: 1.25rem;
-        height: 44px;
+    .site-name {
+        position: static;
+        display: block;
+        margin-top: 0.75rem;
+        padding-left: 1.25rem;
     }
 
     .container {
-        padding-top: 4.5rem;
+        padding-top: 0;
     }
 
     .timeline-meta {
