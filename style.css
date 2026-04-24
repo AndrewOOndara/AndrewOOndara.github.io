@@ -153,6 +153,7 @@ body {
     font-size: 1rem;
     font-weight: 400;
     color: var(--text);
+    text-transform: lowercase;
     transition: opacity 0.2s ease;
 }
 
@@ -291,17 +292,17 @@ body {
 }
 
 .project-link {
-    font-size: 0.8125rem;
-    color: var(--muted);
-    text-decoration: none;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    transition: color 0.2s ease;
+    font-size: 1rem;
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--muted);
+    font-weight: 400;
+    transition: text-decoration-color 0.2s ease, opacity 0.2s ease;
 }
 
 .project-link:hover {
-    color: var(--text);
+    opacity: 0.6;
 }
 
 /* ============================================================
@@ -480,19 +481,25 @@ body {
     }
 
     .site-header {
-        padding: 1.5rem 0 1.5rem;
+        padding: 0.75rem 0 1rem;
         margin-bottom: 1rem;
     }
 
     .site-name {
-        position: static;
-        display: block;
-        padding: 1.25rem 1.25rem 0;
+        position: fixed;
+        top: 1.25rem;
+        left: 1.25rem;
     }
 
     .corner-image {
-        position: static;
-        display: none;
+        position: fixed;
+        top: 0.75rem;
+        right: 1.25rem;
+        height: 44px;
+    }
+
+    .container {
+        padding-top: 4.5rem;
     }
 
     .timeline-meta {
