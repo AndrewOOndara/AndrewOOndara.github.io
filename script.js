@@ -132,6 +132,7 @@ class SmoothScroller {
     }
 }
 
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new ThemeManager();
@@ -141,17 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Add some interactive features
 document.addEventListener('DOMContentLoaded', () => {
-    // Add hover effects for project cards
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-4px)';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
-        });
-    });
 
     // Add loading animation for blog posts
     const blogPosts = document.getElementById('blog-posts');
