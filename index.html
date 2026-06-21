@@ -74,6 +74,21 @@
                 <div class="section-body">
 
                     <div class="project-card">
+                        <span class="project-title">Papootie</span>
+                        <div class="project-body">
+                            <p class="project-description">A collaborative trip planning platform. Plan, organize, and collaborate on every detail in one place — itineraries, maps, and shared notes for groups of travelers.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">Google Maps</span>
+                                <span class="tech-tag">SQLite</span>
+                            </div>
+                            <a href="https://papootie.com/" target="_blank" class="project-link">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
                         <span class="project-title">Loop</span>
                         <div class="project-body">
                             <div class="project-image-container">
@@ -257,6 +272,28 @@
                 </div>
             </details>
 
+        <!-- Ideas Section -->
+        <details class="section" id="ideas">
+            <summary class="section-summary">
+                <span class="section-title">Ideas</span>
+                <span class="section-indicator"></span>
+            </summary>
+            <div class="section-body">
+                <div id="ideas-gate" class="ideas-gate">
+                    <input type="password" id="ideas-password-input" class="ideas-password-input" placeholder="password" autocomplete="off">
+                    <p id="ideas-password-error" class="ideas-password-error"></p>
+                </div>
+                <div id="ideas-content" class="ideas-content" style="display:none;">
+                    <form id="add-idea-form" class="add-idea-form">
+                        <input type="text" id="idea-title" class="idea-input" placeholder="idea title" required autocomplete="off">
+                        <textarea id="idea-desc" class="idea-textarea" placeholder="describe it..." rows="2"></textarea>
+                        <button type="submit" class="idea-submit-btn">+ add idea</button>
+                    </form>
+                    <div id="ideas-list" class="ideas-list"></div>
+                </div>
+            </div>
+        </details>
+
         <!-- Footer -->
         <footer class="footer">
             <div class="social-links">
@@ -329,6 +366,149 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeModal();
         });
+    </script>
+
+    <script>
+    (function () {
+        var HASH = '6254c24db21c648e17a112af067045fcbc32d7b7f4fcec24ff1ac7d1ac99492b';
+        var STORAGE_KEY = 'ao_ideas';
+        var SESSION_KEY = 'ao_ideas_unlocked';
+
+        var SEED_IDEAS = [
+            {
+                id: 'seed-1',
+                title: 'Family Tree',
+                description: 'Send a form to family members to connect everyone in a node-based graph — a living family tree built together for future generations.',
+                date: '2026-06-01'
+            },
+            {
+                id: 'seed-2',
+                title: 'AI Skin Diary',
+                description: 'An AI-powered skin journal to log daily skin conditions, treatments, and progress with photos. Pattern recognition to identify triggers and improvements over time.',
+                date: '2026-06-01'
+            },
+            {
+                id: 'seed-3',
+                title: 'Depop for Africa',
+                description: 'A thrift marketplace built for the emerging secondhand culture across Africa. Like Depop but rooted in local markets, fashion communities, and African aesthetics.',
+                date: '2026-06-01'
+            },
+            {
+                id: 'seed-4',
+                title: 'Pidigion',
+                description: 'Drones as a service for last-mile delivery — named after pigeons, the original message carriers. Fast, efficient aerial delivery for people and communities underserved by traditional logistics.',
+                date: '2026-06-01'
+            }
+        ];
+
+        async function hashStr(str) {
+            var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+            return Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+        }
+
+        function getIdeas() {
+            try {
+                var stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) return JSON.parse(stored);
+            } catch (e) {}
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_IDEAS));
+            return SEED_IDEAS.slice();
+        }
+
+        function saveIdeas(ideas) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(ideas));
+        }
+
+        function formatDate(dateStr) {
+            var parts = dateStr.split('-');
+            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            return months[parseInt(parts[1], 10) - 1] + ' ' + parseInt(parts[2], 10) + ', ' + parts[0];
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function renderIdeas() {
+            var list = document.getElementById('ideas-list');
+            var ideas = getIdeas().sort(function (a, b) {
+                var dateCmp = b.date.localeCompare(a.date);
+                return dateCmp !== 0 ? dateCmp : b.id.localeCompare(a.id);
+            });
+            list.innerHTML = ideas.map(function (idea) {
+                return '<div class="idea-entry" data-id="' + idea.id + '">' +
+                    '<div class="idea-entry-header">' +
+                    '<span class="idea-entry-title">' + escapeHtml(idea.title) + '</span>' +
+                    '<div class="idea-entry-meta">' +
+                    '<span class="idea-entry-date">' + formatDate(idea.date) + '</span>' +
+                    '<button class="idea-delete-btn" onclick="window._deleteIdea(\'' + idea.id + '\')" aria-label="Delete">&times;</button>' +
+                    '</div></div>' +
+                    (idea.description ? '<p class="idea-entry-desc">' + escapeHtml(idea.description) + '</p>' : '') +
+                    '</div>';
+            }).join('');
+        }
+
+        window._deleteIdea = function (id) {
+            var ideas = getIdeas().filter(function (i) { return i.id !== id; });
+            saveIdeas(ideas);
+            renderIdeas();
+        };
+
+        function unlock() {
+            document.getElementById('ideas-gate').style.display = 'none';
+            document.getElementById('ideas-content').style.display = 'block';
+            sessionStorage.setItem(SESSION_KEY, '1');
+            renderIdeas();
+        }
+
+        var pwInput = document.getElementById('ideas-password-input');
+        var pwError = document.getElementById('ideas-password-error');
+
+        pwInput.addEventListener('keydown', async function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                var h = await hashStr(pwInput.value);
+                if (h === HASH) {
+                    unlock();
+                } else {
+                    pwInput.classList.remove('shake');
+                    void pwInput.offsetWidth;
+                    pwInput.classList.add('shake');
+                    pwError.textContent = 'incorrect';
+                    pwInput.value = '';
+                    setTimeout(function () { pwError.textContent = ''; }, 2000);
+                }
+            }
+        });
+
+        document.getElementById('add-idea-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var title = document.getElementById('idea-title').value.trim();
+            var desc = document.getElementById('idea-desc').value.trim();
+            if (!title) return;
+            var ideas = getIdeas();
+            ideas.unshift({
+                id: Date.now().toString(),
+                title: title,
+                description: desc,
+                date: new Date().toISOString().slice(0, 10)
+            });
+            saveIdeas(ideas);
+            document.getElementById('idea-title').value = '';
+            document.getElementById('idea-desc').value = '';
+            renderIdeas();
+        });
+
+        if (sessionStorage.getItem(SESSION_KEY)) {
+            unlock();
+        }
+
+        document.getElementById('ideas').addEventListener('toggle', function () {
+            if (this.open && !sessionStorage.getItem(SESSION_KEY)) {
+                setTimeout(function () { pwInput.focus(); }, 50);
+            }
+        });
+    })();
     </script>
 </body>
 </html>

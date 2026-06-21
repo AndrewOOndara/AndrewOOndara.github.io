@@ -391,6 +391,174 @@ body {
 
 
 /* ============================================================
+   Ideas
+   ============================================================ */
+.ideas-gate {
+    padding-left: 1.5rem;
+}
+
+.ideas-password-input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--muted);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.875rem;
+    padding: 0.25rem 0;
+    outline: none;
+    width: 160px;
+    transition: border-color 0.2s ease;
+}
+
+.ideas-password-input:focus {
+    border-color: var(--text);
+}
+
+.ideas-password-input::placeholder {
+    color: var(--muted);
+}
+
+.ideas-password-error {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+    min-height: 1rem;
+}
+
+.ideas-content {
+    padding-left: 1.5rem;
+}
+
+.add-idea-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--bg-tag);
+}
+
+.idea-input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--muted);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.25rem 0;
+    outline: none;
+    width: 100%;
+}
+
+.idea-input::placeholder { color: var(--muted); }
+
+.idea-textarea {
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--bg-tag);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.875rem;
+    padding: 0.25rem 0;
+    outline: none;
+    resize: none;
+    width: 100%;
+    line-height: 1.6;
+}
+
+.idea-textarea::placeholder { color: var(--muted); }
+
+.idea-submit-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+    transition: color 0.2s ease;
+}
+
+.idea-submit-btn:hover { color: var(--text); }
+
+.ideas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.idea-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.idea-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.idea-entry-title {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text);
+}
+
+.idea-entry-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.idea-entry-date {
+    font-size: 0.75rem;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.idea-entry-desc {
+    font-size: 0.9375rem;
+    color: var(--text);
+    line-height: 1.65;
+}
+
+.idea-delete-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.15s ease, color 0.15s ease;
+    line-height: 1;
+}
+
+.idea-entry:hover .idea-delete-btn {
+    opacity: 1;
+}
+
+.idea-delete-btn:hover {
+    color: var(--text);
+}
+
+@keyframes wrongPassword {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-6px); }
+    40%       { transform: translateX(6px); }
+    60%       { transform: translateX(-4px); }
+    80%       { transform: translateX(4px); }
+}
+
+.ideas-password-input.shake {
+    animation: wrongPassword 0.35s ease;
+}
+
+/* ============================================================
    Footer
    ============================================================ */
 .footer {
