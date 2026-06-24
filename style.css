@@ -8,13 +8,6 @@
     --bg-tag: #f2f2f2;
 }
 
-[data-theme="dark"] {
-    --bg: #0e0e0e;
-    --text: #f0f0f0;
-    --muted: #777777;
-    --bg-tag: #1e1e1e;
-}
-
 /* ============================================================
    Reset & Base
    ============================================================ */
@@ -34,7 +27,6 @@ body {
     line-height: 1.65;
     color: var(--text);
     background-color: var(--bg);
-    transition: background-color 0.25s ease, color 0.25s ease;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -94,32 +86,6 @@ body {
     color: var(--muted);
     font-weight: 400;
 }
-
-/* Theme toggle */
-#theme-toggle {
-    background: none;
-    border: none;
-    color: var(--muted);
-    cursor: pointer;
-    padding: 0.25rem;
-    display: flex;
-    align-items: center;
-    transition: color 0.2s ease;
-    flex-shrink: 0;
-}
-
-#theme-toggle:hover {
-    color: var(--text);
-}
-
-.sun-icon, .moon-icon {
-    transition: opacity 0.2s ease;
-}
-
-[data-theme="dark"] .sun-icon  { opacity: 0; display: none; }
-[data-theme="dark"] .moon-icon { opacity: 1; display: block; }
-[data-theme="light"] .sun-icon  { opacity: 1; display: block; }
-[data-theme="light"] .moon-icon { opacity: 0; display: none; }
 
 /* ============================================================
    Sections — collapsible

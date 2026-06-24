@@ -1,29 +1,3 @@
-// Theme management
-class ThemeManager {
-    constructor() {
-        this.theme = localStorage.getItem('theme') || 'light';
-        this.init();
-    }
-
-    init() {
-        document.documentElement.setAttribute('data-theme', this.theme);
-        this.setupToggle();
-    }
-
-    setupToggle() {
-        const toggle = document.getElementById('theme-toggle');
-        if (toggle) {
-            toggle.addEventListener('click', () => this.toggleTheme());
-        }
-    }
-
-    toggleTheme() {
-        this.theme = this.theme === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', this.theme);
-        localStorage.setItem('theme', this.theme);
-    }
-}
-
 // Blog post management
 class BlogManager {
     constructor() {
@@ -135,7 +109,6 @@ class SmoothScroller {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new ThemeManager();
     new BlogManager();
     new SmoothScroller();
 });
